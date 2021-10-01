@@ -25,15 +25,30 @@ body {
 	box-sizing: border-box;
 }
 
-a {
+a, .link {
 	color: var(--color);
+	display: inline-block;
 	text-decoration: none;
 }
 
-a:hover {
+a:hover, .link:hover {
+	cursor: pointer;
 	color: var(--color);
-	text-decoration: underline;
-	text-underline-offset: 0.05em;
+}
+
+a:after, .link:after{
+	transition: 0.25s ease;
+    content: "";
+    display: block;
+	position: sticky;
+	margin-top: -2px;
+    height: 2px;
+    background-color: currentcolor;
+    transform: scalex(0);
+}
+
+a:hover:after, .link:hover:after {
+	transform: scalex(1);
 }
 
 hr {
