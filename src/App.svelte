@@ -44,7 +44,6 @@
 		}
 	}
 	.eyes::after {
-		width: 100%;
 		content: "(oo)";
 		-webkit-animation: eyesFrames 1s linear infinite alternate;
 		animation: eyesFrames 1s linear infinite alternate;
