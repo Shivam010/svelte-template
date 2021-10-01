@@ -1,4 +1,12 @@
-/node_modules/
-/public/build/
+# Dependency directories
+node_modules/
 
+# Build directory
+public/build/
+
+# Dotenv environment variables file
+.env
+.env.*
+
+# System files
 .DS_Store

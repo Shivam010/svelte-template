@@ -6,6 +6,9 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
+import replace from '@rollup/plugin-replace';
+import { config } from 'dotenv';
+import { unlink } from 'fs';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -30,15 +33,30 @@ function serve() {
 	};
 }
 
+function setEnv() {
+	let env = config().parsed;
+	if (!env) env = {};
+	if (!env.APP_BASE_URL) env.APP_BASE_URL = '/'
+
+	return replace({
+		preventAssignment: true,
+		// stringify the envs       
+		'globalThis.isProd': JSON.stringify(production),
+		'globalThis.APP_BASE_URL': JSON.stringify(env.APP_BASE_URL),
+	});
+}
+
 export default {
 	input: 'src/main.ts',
 	output: {
-		sourcemap: true,
+		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		// remove sourceMap file cache, if any
+		unlink("public/build/bundle.js.map", () => { }),
 		svelte({
 			preprocess: sveltePreprocess({ sourceMap: !production }),
 			compilerOptions: {
@@ -64,6 +82,9 @@ export default {
 			sourceMap: !production,
 			inlineSources: !production
 		}),
+
+		// Parse and set environment variables
+		setEnv(),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated

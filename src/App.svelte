@@ -1,30 +1,52 @@
 <script lang="ts">
-	export let name: string;
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1 class="header">Hello...👋</h1>
+	<i>
+		Welcome to the Svelte Template by
+		<a href="https://shivam010.in/" target="_blank"> Shivam Rathore </a>
+		<span class="eyes" />
+	</i>
 </main>
 
 <style>
 	main {
+		height: 100%;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
+		width: 300px;
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.header {
+		font-size: 64px;
+		font-weight: normal;
+		margin: 0;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
+	@keyframes eyesFrames {
+		0% {
+			content: "(oo)";
 		}
+		50% {
+			content: "(••)";
+		}
+	}
+	@-webkit-keyframes eyesFrames {
+		0% {
+			content: "(oo)";
+		}
+		50% {
+			content: "(••)";
+		}
+	}
+	.eyes::after {
+		width: 100%;
+		content: "(oo)";
+		-webkit-animation: eyesFrames 1s linear infinite alternate;
+		animation: eyesFrames 1s linear infinite alternate;
 	}
 </style>
