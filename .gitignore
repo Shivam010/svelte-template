@@ -10,3 +10,6 @@ public/build/
 
 # System files
 .DS_Store
+
+# CI-CD directory
+.deploy-branch

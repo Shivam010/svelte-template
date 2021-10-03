@@ -1,0 +1,40 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: "npm"
+      - run: npm i || echo "Done"
+      - run: npm run build
+      - name: Checkout deploy branch in .deploy-branch
+        uses: actions/checkout@v2
+        with:
+          ref: deploy
+          path: .deploy-branch
+      - name: Copy new build files into .deploy-branch
+        run: |
+          cp -r ./public/* ./.deploy-branch
+          cp LICENSE ./.deploy-branch/LICENSE
+          cp README.md ./.deploy-branch/README.md
+      - name: Commit & Push changes in the .deploy-branch
+        run: |
+          last_commit=`git log --pretty=%s -1` && echo $last_commit
+          cd .deploy-branch
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Deploying code: $last_commit" || echo "Ignoring nothing to commit"
+          git push origin build
