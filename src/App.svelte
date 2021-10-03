@@ -11,7 +11,9 @@
 	<i>
 		{#if !thanks} Welcome {:else} For your visit {/if}
 		to the Svelte Template by
-		<a href="https://shivam010.in/" target="_blank"> Shivam Rathore </a>
+		<a href="https://shivam010.in/" target="_blank" rel="noopener">
+			Shivam Rathore
+		</a>
 		<Eyes />
 	</i>
 	<nav>
