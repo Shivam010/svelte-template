@@ -1,5 +1,6 @@
 # svelte template
 [![build](https://github.com/Shivam010/svelte-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Shivam010/svelte-template/actions/workflows/ci.yml)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fe07fc76-6b5d-4cec-978d-fc8d6685a18f/deploy-status)](https://svelte-tmpl.netlify.app/)
 
 This is a minimalized project template for [Svelte](https://svelte.dev) apps. It lives at [`Shivam010/svelte-template`](https://github.com/Shivam010/svelte-template). It adds some major functionalities in the [`Svelte official template`](https://github.com/sveltejs/template)
 
