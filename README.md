@@ -1,4 +1,5 @@
 # svelte template
+[![build](https://github.com/Shivam010/svelte-template/actions/workflows/ci.yml/badge.svg)](https://github.com/Shivam010/svelte-template/actions/workflows/ci.yml)
 
 This is a minimalized project template for [Svelte](https://svelte.dev) apps. It lives at [`Shivam010/svelte-template`](https://github.com/Shivam010/svelte-template). It adds some major functionalities in the [`Svelte official template`](https://github.com/sveltejs/template)
 

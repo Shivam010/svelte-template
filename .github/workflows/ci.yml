@@ -37,4 +37,4 @@ jobs:
           git config user.email github-actions@github.com
           git add .
           git commit -m "Deploying code: $last_commit" || echo "Ignoring nothing to commit"
-          git push origin build
+          git push origin deploy
